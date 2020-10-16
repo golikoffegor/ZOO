@@ -109,7 +109,7 @@ class Staff(models.Model):
     name = models.CharField(max_length = 128, verbose_name = 'имя сотрудника')
     gender = models.CharField(max_length = 128, choices = GENDER_CHOICES, verbose_name = 'пол')
     protected_animal = models.ForeignKey('Animal', blank = True, null = True, on_delete = models.SET_NULL, verbose_name = 'наблюдаемое животное')
-    protection_time = models.IntegerField(verbose_name = 'время наблюдения ')
+    protection_time = models.IntegerField(verbose_name = 'время наблюдения (дней)')
     description = models.TextField(max_length = 300,blank = True, null = True, verbose_name = 'описание')
     created_at = models.DateField(auto_now_add = True, verbose_name = 'зарегестрирован')
     updated_at = models.DateField(auto_now = True, verbose_name = 'отредактирован')
