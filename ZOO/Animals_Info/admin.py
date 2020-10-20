@@ -11,7 +11,7 @@ class Animal_PlaceAdmin(admin.ModelAdmin):
     list_display = ['name', 'place_type', 'id', 'created_at', 'updated_at']
 
 class StaffAdmin(admin.ModelAdmin):
-    list_display = ['name', 'protected_animal', 'id', 'created_at', 'updated_at']
+    list_display = ['name', 'protected_animal', 'protection_time', 'id', 'created_at', 'updated_at']
 
 admin.site.register(Animal, AnimalAdmin)
 admin.site.register(Animal_Type, Animal_TypeAdmin)
