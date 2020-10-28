@@ -14,7 +14,7 @@ class Animal_TypeSerializer(serializers.ModelSerializer):
 class Animal_PlaceSerializer(serializers.ModelSerializer): 
     class Meta:
         model = Animal_Place
-        fields = ('id','name','nickname_1_id','nickname_2_id','nickname_3_id','place_type','heat','description','created_at','updated_at')
+        fields = ('id','name','nickname_a','place_type','heat','description','created_at','updated_at')
 
 class StaffSerializer(serializers.ModelSerializer): 
     class Meta:

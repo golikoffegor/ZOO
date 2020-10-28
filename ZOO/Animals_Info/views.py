@@ -1,8 +1,10 @@
 from rest_framework import viewsets
 from django.http import HttpResponse
 from django.db.models import Q
+from django_filters.rest_framework import DjangoFilterBackend
+from .filters import StaffFilter
 
-from .models import Animal, Animal_Type, Animal_Place, Staff
+from .models import *
 from .serializers import AnimalSerializer, Animal_TypeSerializer, Animal_PlaceSerializer, StaffSerializer
 
 def set_query_params(request):
@@ -47,6 +49,8 @@ class Animal_PlaceViewSet(viewsets.ModelViewSet):
 class StaffViewSet(viewsets.ModelViewSet):
     serializer_class = StaffSerializer
     queryset = Staff.objects.all()
+    filter_backends = (DjangoFilterBackend,)
+    filterset_class = StaffFilter
 
     def get_queryset(self):
         filtered_query_set = self.queryset
@@ -58,4 +62,3 @@ class StaffViewSet(viewsets.ModelViewSet):
             filtered_query_set = filtered_query_set.filter(protection_time__lte = params["lower"])
 
         return filtered_query_set
-

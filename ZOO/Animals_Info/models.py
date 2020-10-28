@@ -1,6 +1,5 @@
 from django.db import models
 
-
 class Animal(models.Model):
     WILD = 'wild'
     CHANGING = 'changing'
@@ -81,9 +80,7 @@ class Animal_Place(models.Model):
     ]
 
     name = models.CharField(max_length = 128, verbose_name = 'название места содержания')
-    nickname_1 = models.ForeignKey('Animal', blank = True, null = True, on_delete = models.SET_NULL, related_name = 'nickname_1', verbose_name = 'Выберите животное #1')
-    nickname_2 = models.ForeignKey('Animal', blank = True, null = True, on_delete = models.SET_NULL, related_name = 'nickname_2', verbose_name = 'Выберите животное #2')
-    nickname_3 = models.ForeignKey('Animal', blank = True, null = True, on_delete = models.SET_NULL, related_name = 'nickname_3', verbose_name = 'Выберите животное #3')
+    nickname_a = models.ManyToManyField(Animal, blank = True, verbose_name = 'размещенные животные')
     place_type = models.CharField(max_length = 128, choices = PLACE_TYPE, verbose_name = 'тип содержания')
     heat = models.CharField(max_length = 128, choices = HEAT_TYPE, verbose_name = 'отопление')
     description = models.TextField(max_length = 300,blank = True, null = True, verbose_name = 'описание')
@@ -120,5 +117,6 @@ class Staff(models.Model):
     class Meta:
         verbose_name = "сотрудник"
         verbose_name_plural = "сотрудники"
+
 
 
